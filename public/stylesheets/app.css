@@ -1,0 +1,91 @@
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+h1 {
+  text-align: center;
+}
+
+.index {
+  background-image: url(https://images.unsplash.com/photo-1544840494-d0e48b117320?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60);
+  background-size: cover;
+  background-position: center center;
+  min-height: 100%;
+  min-width: 100%;
+  margin: 0;
+}
+
+#content {
+  text-align: center;
+  padding-top: 25%;
+  color: black;
+}
+
+.item:hover {
+  font-size: 1.1em;
+  transition-duration: 200ms;
+  text-decoration-line: underline;
+}
+hr {
+  width: 50%;
+  opacity: 0.6;
+}
+
+.ui.menu {
+  margin: 0;
+  padding: 0;
+}
+
+#Gallery-Title {
+  text-align: center;
+}
+
+#Add-Item {
+  border: 1px solid black;
+  width: 70%;
+  justify-content: center;
+  box-shadow: 2px 1px 2px black;
+  margin: auto auto;
+}
+
+#Add-Item input,
+#Add-Item textarea,
+#Add-Item h1 {
+  text-align: center;
+  margin: 10px auto;
+  display: block;
+  width: 60%;
+}
+
+form button {
+  margin: auto auto;
+}
+
+#signup {
+  box-shadow: 2px 1px 2px black;
+  border: 1px solid black;
+  display: block;
+  margin: auto auto;
+  width: 60%;
+}
+
+#signup div {
+  display: flex;
+  margin: 10px auto;
+  justify-content: center;
+}
+
+#login {
+  box-shadow: 2px 1px 2px black;
+  border: 1px solid black;
+  display: block;
+  margin: auto auto;
+  width: 60%;
+}
+
+#login input {
+  display: flex;
+  margin: 10px auto;
+  justify-content: center;
+}
