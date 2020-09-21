@@ -11,7 +11,7 @@ router.get("/gallery/:id", (req, res) => {
   );
 });
 
-router.post("/gallery/:id", (req, res) => {
+router.post("/gallery/:id", middleware, (req, res) => {
   Item.findById(req.params.id, (err, foundItem) => {
     if (err) {
       console.log(err);

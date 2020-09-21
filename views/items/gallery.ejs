@@ -1,0 +1,40 @@
+<%- include("../partials/header") %>
+<div class="gallery ui container">
+  <h1>Inventory</h1>
+  <div class="ui equal width grid">
+    <div class="row">
+      <% items.forEach(item => { %>
+      <a href="/gallery/<%= item._id %> ">
+        <div class="card">
+          <div class="column">
+            <div class="ui segment">
+              <div class="ui raised link card">
+                <div class="content">
+                  <div class="right floated meta">14h</div>
+                  <img class="ui avatar image" src="Images/avatar.jpg" />
+                  <%= currentUser%>
+                </div>
+                <div class="ui image">
+                  <img src="<%=item.image%>" alt="Item post image" />
+                </div>
+                <div class="content">
+                  <h3><%= item.title %></h3>
+                  <h4><%= item.price %></h4>
+                  <p><%= item.description %></p>
+                  <span class="right floated">
+                    <i class="heart outline like icon"></i>
+                    17 likes
+                  </span>
+                  <i class="comment icon"></i>
+                  3 comments
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+  </div>
+</div>
+<%- include("../partials/footer") %>

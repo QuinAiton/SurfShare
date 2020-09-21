@@ -1,0 +1,29 @@
+<%- include ("../partials/header") %>
+<div class="ui container">
+  <br />
+  <form id="Add-Item" class="ui form" action="/gallery" method="POST">
+    <h1>Tell Us What You Got</h1>
+    <div class="field">
+      <label>Title</label>
+      <input type="text" name="item[title]" placeholder="Title" />
+    </div>
+    <div class="field">
+      <label>Image</label>
+      <input type="text" name="item[image]" placeholder="place Url" />
+    </div>
+    <div class="field">
+      <label>Price</label>
+      <input type="text" name="item[price]" placeholder="$$" />
+    </div>
+    <div class="field">
+      <label>Description</label>
+      <textarea
+        type="text"
+        name="item[description]"
+        placeholder="Please enter a description."
+      ></textarea>
+    </div>
+    <button class="ui button green" type="submit">Submit</button>
+  </form>
+</div>
+<%- include ("../partials/footer") %>

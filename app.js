@@ -7,13 +7,16 @@ const express = require("express"),
   passport = require("passport"),
   LocalStrategy = require("passport-local"),
   flash = require("connect-flash"),
-  middleware = require("./middleware/index");
-
-//models
+  middleware = require("./middleware/index"),
+  Item = require("./models/Item"),
+  User = require("./models/user"),
+  Comment = require("./models/Comment"),
+  SeedDB = require("./seeds");
 //=================================================
-const Item = require("./models/Item"),
-  User = require("./models/user");
-//=================================================
+// requiring Routes
+const ItemRoutes = require("./routes/items"),
+  CommentRoutes = require("./routes/comments"),
+  IndexRoutes = require("./routes/index");
 
 //
 mongoose
@@ -37,7 +40,6 @@ app.use(flash());
 
 // ================================================================
 // PASSPORT CONFIG
-// ================================================================
 app.use(
   require("express-session")({
     secret: "7427 Clover Road",
@@ -61,134 +63,14 @@ app.use((req, res, next) => {
 });
 //======================================================================
 
-//All Routes
-//=======================================================================
-const isLoggedIn = (req, res, next) => {
-  req.isAuthenticated() ? next() : res.redirect("/login");
-};
-
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
-app.get("/gallery", (req, res) => {
-  console.log(req.user);
-  Item.find({}, (err, items) => {
-    err
-      ? console.log(err)
-      : res.render("gallery", { items: items, currentUser: req.user });
-  });
-});
-
-//add item to Gallery
-//========================================================================
-app.get("/addItem", isLoggedIn, (req, res) => {
-  res.render("AddItem");
-});
-
-app.post("/gallery", isLoggedIn, (req, res) => {
-  const description = req.body.description,
-    price = req.body.price,
-    title = req.body.title,
-    image = req.body.image,
-    newItem = {
-      title: title,
-      image: image,
-      price: price,
-      description: description,
-    };
-  // req.body.Item.body = req.sanitize(req.body.Item.body);
-  Item.create(newItem, (err, newlyCreated) => {
-    err ? console.log(err) : res.redirect("/gallery");
-  });
-});
-//=====================================================================
-
-//show route
-//======================================================================
-app.get("/gallery/:id", (req, res) => {
-  Item.findById(req.params.id, (err, foundItem) => {
-    err ? console.log(err) : res.render("show", { item: foundItem });
-  });
-});
-//======================================================================
+app.use(ItemRoutes);
+app.use(CommentRoutes);
+app.use(IndexRoutes);
 
 //Blog Route
 //====================================================
 app.get("/forum", (req, res) => {
   res.render("forum");
-});
-
-// edit route
-//===================================================
-app.get("/gallery/:id/edit", (req, res) => {
-  Item.findById(req.params.id, (err, foundItem) => {
-    res.render("edit", { item: foundItem });
-  });
-});
-
-app.put("/gallery/:id", (req, res) => {
-  Item.findByIdAndUpdate(req.params.id, req.body.item, (err, updateditem) => {
-    err ? console.log(err) : res.redirect("/gallery" + item._id);
-  });
-});
-
-//delete route
-//====================================================
-app.delete("/gallery/:id", (req, res) => {
-  Item.findByIdAndDelete(req.params.id, (err) => {
-    err ? console.log(err) : res.redirect("/gallery");
-  });
-});
-//=====================================================================
-//Authorization routes
-//=====================================================================
-
-//SignUp Routes
-app.get("/signup", (req, res) => {
-  res.render("signup");
-});
-
-app.post("/signup", (req, res) => {
-  User.register(
-    new User({
-      username: req.body.username,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-    }),
-    req.body.password,
-    (err, user) => {
-      if (err) {
-        console.log(err);
-        res.redirect("/signup");
-      }
-      passport.authenticate("local")(req, res, () => {
-        res.redirect("/");
-      });
-    }
-  );
-});
-
-//Login routes
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
-app.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
-  }),
-  (req, res) => {}
-);
-
-//logout routes
-app.get("/logout", (req, res) => {
-  req.flash("success", "Goodbye " + req.user.username + " logout successfull");
-  req.logout();
-  res.redirect("/");
 });
 
 app.listen(3000, () => {
