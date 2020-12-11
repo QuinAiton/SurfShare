@@ -16,18 +16,18 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
     />
-    <link href="stylesheets/app.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/app.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
     <div id="navbar" class="ui inverted stackable menu">
       <a href="/">
         <div class="item">
-          <img src="Images/SurfShareLogo.png" /></div
+          <img src="/Images/SurfShareLogo.png" /></div
       ></a>
       <a class="item" href="/gallery">Bargin Cave</a>
       <a class="item" href="/gallery/addItem">Sell Gear</a>
-      <a class="item" href="#">Forum</a>
+      <a class="item" href="/forum">Forum</a>
       <% if(!currentUser){%>
       <a class="item" href="/login">Sign-In</a>
       <a class="item" href="/signup">Sign-Up</a>
@@ -36,3 +36,18 @@
       <% }%>
     </div>
 
+    <!-- Req.flash message -->
+    <div class="flashMessage flex container">
+      <% if(error && error.length>0){%>
+      <div class="ui red message">
+        <i class="close icon"></i>
+        <div class="header" role="alert"><%= error %></div>
+      </div>
+      <%}%> <% if(success && success.length>0){%>
+      <div class="ui green message">
+        <i class="close icon"></i>
+        <div class="header" role="alert"><%= success %></div>
+      </div>
+      <%}%>
+    </div>
+ 

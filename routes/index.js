@@ -40,7 +40,7 @@ router.post(
     successRedirect: "/",
     failureRedirect: "/login",
   }),
-  (req, res) => {}
+  (req, res) => { }
 );
 
 //logout routes

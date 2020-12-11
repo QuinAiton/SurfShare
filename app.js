@@ -16,13 +16,15 @@ const express = require("express"),
 // requiring Routes
 const ItemRoutes = require("./routes/items"),
   CommentRoutes = require("./routes/comments"),
-  IndexRoutes = require("./routes/index");
+  IndexRoutes = require("./routes/index"),
+  ForumRoutes = require("./routes/forum");
 
 //
 mongoose
   .connect("mongodb://localhost:27017/SurfShareDB", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .then(() => {
     console.log("Your Database has been connected");
@@ -38,11 +40,12 @@ app.use(methodOverride("_method"));
 app.use(expressSanitizer());
 app.use(flash());
 
+
 // ================================================================
 // PASSPORT CONFIG
 app.use(
   require("express-session")({
-    secret: "7427 Clover Road",
+    secret: "Pemberton",
     resave: false,
     saveUninitialized: false,
   })
@@ -66,13 +69,8 @@ app.use((req, res, next) => {
 app.use(ItemRoutes);
 app.use(CommentRoutes);
 app.use(IndexRoutes);
+app.use(ForumRoutes);
 
-//Blog Route
-//====================================================
-app.get("/forum", (req, res) => {
-  res.render("forum");
-});
-
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("App Firing On Port 3000!");
 });

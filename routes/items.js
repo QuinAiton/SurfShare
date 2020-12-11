@@ -14,13 +14,17 @@ router.get("/gallery", (req, res) => {
 
 //add item to Gallery
 //========================================================================
-router.get("/gallery/addItem", (req, res) => {
-  res.render("items/AddItem");
+router.get("/gallery/addItem", middleware.isLoggedIn, (req, res) => {
+  res.render("items/addItem");
 });
 
-router.post("/gallery", (req, res) => {
+router.post("/gallery", middleware.isLoggedIn, (req, res) => {
   // req.body.Item.body = req.sanitize(req.body.Item.body);
-  Item.create(req.body.item, (err, newlyCreated) => {
+  const item = new Item(req.body.item);
+  item.owner.id = req.user._id;
+  item.owner.username = req.user.username;
+  Item.create(item, (err, newlyCreated) => {
+    Item.owner = req.user._id;
     err ? console.log(err) : res.redirect("/gallery");
   });
 });
@@ -39,24 +43,24 @@ router.get("/gallery/:id", (req, res) => {
 
 // edit route
 //===================================================
-router.get("/gallery/:id/edit", (req, res) => {
+router.get("/gallery/:id/edit", middleware.checkItemOwnership, (req, res) => {
   Item.findById(req.params.id, (err, foundItem) => {
     res.render("items/edit", { item: foundItem });
   });
 });
 
-router.put("/gallery/:id", (req, res) => {
+router.put("/gallery/:id", middleware.checkItemOwnership, (req, res) => {
   Item.findByIdAndUpdate(req.params.id, req.body.item, (err, updateditem) => {
-    err ? console.log(err) : res.redirect("/gallery" + item._id);
-  });
+    err ? console.log(err) : res.redirect("/gallery/" + updateditem._id);
+  })
 });
 
 //delete route
 //====================================================
-router.delete("/gallery/:id", (req, res) => {
+router.delete("/gallery/:id", middleware.checkItemOwnership, (req, res) => {
   Item.findByIdAndDelete(req.params.id, (err) => {
     err ? console.log(err) : res.redirect("/gallery");
-  });
-});
+  })
+})
 
 module.exports = router;

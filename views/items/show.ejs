@@ -1,78 +1,68 @@
 <%- include ("../partials/header") %>
-<!-- item information -->
-<div class="ui container">
-  <div class="content">
-    <div class="right floated meta">14h</div>
-    <img class="ui avatar image" src="Images/avatar.jpg" /> Quinten Aiton
-  </div>
-  <div class="image">
-    <img
-      src="<%= item.image %> "
-      alt="item image"
-      height="600px"
-      width="auto"
-      class="center"
-    />
-  </div>
-  <div class="content">
-    <h3><%= item.title %></h3>
-    <h4><%= item.price %></h4>
-    <p><%= item.description %></p>
-    <span class="right floated">
-      <i class="heart outline like icon"></i>
-      17 likes
-    </span>
-    <i class="comment icon"></i>
-    3 comments
-  </div>
-  <div class="extra content">
-    <div class="ui large transparent left icon input">
-      <i class="heart outline icon"></i>
-    </div>
-  </div>
-</div>
-<br />
-<!-- edit and delete buttons -->
-<a href="/gallery/:id/edit"
-  ><button class="ui yellow button">Edit Post</button></a
->
-<form action="/gallery/<%= item._id %>/?_method=DELETE" method="POST">
-  <button id="red-Button" class="ui red button">delete Post</button>
-</form>
-
-<!-- comments sections -->
-<div class="ui container">
-  <div class="ui comments">
-    <h3 class="ui dividing header">Comments</h3>
-    <% item.comments.forEach(comment => { %>
-    <div class="comment">
-      <a class="avatar">
-        <img src="/images/avatar/small/matt.jpg" />
-      </a>
-      <div class="content">
-        <a class="author"><%= comment.author %> </a>
-        <div class="metadata">
-          <span class="date"><%= comment.created %> </span>
+  <!-- item information -->
+  <div class="show-container">
+    <div class="show-wrapper">
+      <div class="item-main">
+        <h1>
+          <%=item.title %>
+        </h1>
+        <img src="<%= item.image %> " alt="item image" height="auto" width="600px">
+      </div>
+      <div class="item-info">
+        <div class="item-description">
+          <h3 id="description">About this Item:</h3>
+          <h4>$<%= item.price %>
+          </h4>
+          <p>
+            <%= item.description %>
+          </p>
         </div>
-        <div class="text"><%= comment.text %></div>
-        <div class="actions"></div>
+        <!-- comments section -->
+        <div class="ui comments">
+          <h3 class="ui dividing header">Comments</h3>
+          <% item.comments.forEach(comment=> { %>
+            <div class="comment">
+              <div class="content">
+                <div class="metadata">
+                  <p id="comment-author">
+                    <%=comment.owner.username %>
+                  </p>
+                  <span id="comment-date">
+                    <%= comment.created %>
+                  </span>
+                </div>
+                <p id="comment-text">
+                  <%= comment.text %>
+                </p>
+              </div>
+            </div>
+            <% }) %>
+
+              <!-- Comments form  -->
+              <% if(currentUser){ %>
+                <form action="/gallery/<%= item._id %>" method="POST" class="ui reply form">
+                  <div class="field">
+                    <textarea name="comment[text]"></textarea>
+                  </div>
+                  <button class="ui blue labeled submit icon button">
+                    <i class="icon edit"></i> Add Comment
+                  </button>
+                </form>
+                <% } %>
+        </div>
+        <!-- edit and delete buttons -->
+        <% if( currentUser && item.owner.id.equals(currentUser._id)){ %>
+          <div class="button-wrapper">
+            <a href="/gallery/<%=item._id%>/edit"><button class="ui yellow button">Edit Post</button></a>
+            <form action="/gallery/<%= item._id %>/?_method=DELETE" method="POST">
+              <button id="red-Button" class="ui red button">delete Post</button>
+            </form>
+          </div>
+          <% } %>
       </div>
     </div>
-    <% }) %>
-
-    <!-- Comments form  -->
-    <form action="/gallery/<%= item._id %>" method="POST" class="ui reply form">
-      <div class="field">
-        <div class="field">
-          <label>author</label>
-          <input type="text" name="comment[author]" placeholder="author" />
-        </div>
-        <textarea name="comment[text]"></textarea>
-      </div>
-      <button class="ui blue labeled submit icon button">
-        <i class="icon edit"></i> Add Comment
-      </button>
-    </form>
   </div>
-</div>
-<%- include ("../partials/footer") %>
+
+
+
+  <%- include ("../partials/footer") %>

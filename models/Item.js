@@ -12,13 +12,13 @@ const itemSchema = new mongoose.Schema({
       ref: "Comment",
     },
   ],
-  author: {
-    id: {
+  owner: {
+    id:
+    {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
     username: String,
-  },
+  }
 });
-
 module.exports = mongoose.model("Item", itemSchema);
