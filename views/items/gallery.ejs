@@ -1,20 +1,22 @@
 <%- include("../partials/header") %>
-<div class="gallery-container">
-  <h1 id="gallery-title">Bargin Cave</h1>
-  <hr>
-  <ul class="wrapper">
-    <%items.forEach(item => { %>
-    <li class="items">
-      <h2 id="title"><%=item.title  %> </h2>
-      <br>
-      <a href="gallery/<%= item._id %>">
-        <img id="image" src="<%= item.image %> " alt="item listing image" width="250px" height="auto">
-      </a>
-      <h3 id="price"><%= item.price %> <h3>
-          <p>Posted by...</p>
-    </li>
-    <% }) %>
-  </ul>
-</div>
+  <div class="gallery-container">
+    <h1 id="gallery-title">Bargin Cave</h1>
+    <hr>
+    <ul class="wrapper">
+      <%items.forEach(item=> { %>
+        <li class="items">
+          <h2 id="title">
+            <%=item.title %> || <%= item.price %>
+          </h2>
+          <a href="gallery/<%= item._id %>">
+            <img class="image" src="<%= item.image %> " alt="item listing image">
+          </a>
+          <div class="middle">
+            <div class="text">Show more</div>
+          </div>
+        </li>
+        <% }) %>
+    </ul>
+  </div>
 
-<%- include("../partials/footer") %>
+  <%- include("../partials/footer") %>

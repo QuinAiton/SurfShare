@@ -7,26 +7,6 @@ h1 {
   text-align: center;
 }
 
-/*=====================Index Page styles=========== */
-.index {
-  background-image: url(https://images.unsplash.com/photo-1544840494-d0e48b117320?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60);
-  background-size: cover;
-  background-position: center center;
-  min-height: 100%;
-  min-width: 100%;
-  margin: 0;
-}
-
-#content {
-  text-align: center;
-  padding-top: 25%;
-  color: black;
-}
-
-hr {
-  width: 50%;
-  opacity: 0.6;
-}
 
 /* ==================Nav-Bar Styles================= */
 .item:hover {
@@ -50,6 +30,26 @@ hr {
 .hide-alert {
   display: none;
 }
+/*=====================Index Page styles=========== */
+.index {
+  background-image: url(https://images.unsplash.com/photo-1544840494-d0e48b117320?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60);
+  background-size: cover;
+  background-position: center center;
+  min-height: 100%;
+  min-width: 100%;
+  margin: 0;
+}
+
+#content {
+  text-align: center;
+  padding-top: 25%;
+  color: #000;
+}
+
+hr {
+  width: 50%;
+  opacity: 0.6;
+}
 /* ===================Gallary Styles================= */
 
 #gallery-title {
@@ -62,21 +62,62 @@ hr {
 .gallary-container{ 
   box-sizing: border-box;
   margin: auto auto;
+  display: flex;
 }
 
 .wrapper{ 
   margin: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+
 }
 .items{ 
+  max-width: 300px;
+  max-height: auto;
   display: flex; 
   align-content: center;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   padding: 30px;
-  height: 80%;
-  width: 80%;
+  animation: popout 1s ease;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  position: relative;
+  bottom: 175px;
+  left: 60px;
+  transition: .5s ease;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  align-items: center;
+}
+/* image hover effects */
+.items:hover .image {
+  opacity: 0.3;
+}
+
+.items:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
 }
 
 
@@ -130,8 +171,8 @@ form button {
   padding-bottom: 10%;
 }
 #description{ 
-  color: white;
-  background-color: black;
+  color: #fff;
+  background-color: #000;
   width: 60%;
   text-align: center;
   margin: 0;
@@ -150,9 +191,43 @@ form button {
 
 }
 
+/*=================Forum styles=================== */
+.forum-container{ 
+  display: grid;
+  grid-template-rows: repeat(2,1fr);
+  grid-template-columns: repeat(2,1fr);
+  margin:auto auto;
+  border: 1px #ffe4c4 solid;
+  border-radius: 10px;
+  width: 60%;
+  height: 100%;
+  align-items: flex-start;
+  justify-items: center;
+  
+}
+
+.forum-header{
+  text-align: center;
+  animation: popout 1s ease;
+}
+
+.forum-header h2{ 
+ color: #000;
+}
 
 
 
+
+/* surf reports */
+.report-wrapper{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+}
+.report{ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 /*============Authentification styles================ */
 #signup {
   width: 80%;
@@ -177,4 +252,17 @@ form button {
 #register-button {
   float: inline-end;
   margin: 10px;
+}
+
+/* ========== Animations=============== */
+
+@keyframes popout {
+  from{transform:scale(0)}
+  80%{transform:scale(1.2)}
+  to{transform:scale(1)}
+}
+@-webkit-keyframes popout {
+  from{-webkit-transform:scale(0)}
+  80%{-webkit-transform:scale(1.2)}
+  to{-webkit-transform:scale(1)}
 }
