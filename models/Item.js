@@ -13,12 +13,11 @@ const itemSchema = new mongoose.Schema({
     },
   ],
   owner: {
-    id:
-    {
+    id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
     username: String,
-  }
+  },
 });
 module.exports = mongoose.model("Item", itemSchema);
