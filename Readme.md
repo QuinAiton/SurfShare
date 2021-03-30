@@ -4,7 +4,7 @@ SurfShare is a personal full stack web application built with Node, Express, mon
 
 ## Final Product
 
-!["screenshot description"](#)
+!["SurfShare Landing Page"](#docs/SurfShareHome.png)
 !["screenshot description"](#)
 
 ## Dependencies
