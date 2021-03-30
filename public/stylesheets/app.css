@@ -7,7 +7,6 @@ h1 {
   text-align: center;
 }
 
-
 /* ==================Nav-Bar Styles================= */
 .item:hover {
   font-size: 1.1em;
@@ -56,27 +55,25 @@ hr {
   text-align: center;
   font-size: 2.5em;
   padding-top: 50px;
-  
 }
 
-.gallary-container{ 
+.gallary-container {
   box-sizing: border-box;
   margin: auto auto;
   display: flex;
 }
 
-.wrapper{ 
+.wrapper {
   margin: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-items: center;
-
 }
-.items{ 
+.items {
   max-width: 300px;
   max-height: auto;
-  display: flex; 
+  display: flex;
   align-content: center;
   align-items: center;
   flex-direction: column;
@@ -89,7 +86,7 @@ hr {
   display: block;
   width: 100%;
   height: auto;
-  transition: .5s ease;
+  transition: 0.5s ease;
   backface-visibility: hidden;
 }
 
@@ -97,7 +94,7 @@ hr {
   position: relative;
   bottom: 175px;
   left: 60px;
-  transition: .5s ease;
+  transition: 0.5s ease;
   opacity: 0;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -114,13 +111,11 @@ hr {
 }
 
 .text {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   font-size: 16px;
   padding: 16px 32px;
 }
-
-
 
 /* =============Add Item syles====================== */
 
@@ -138,92 +133,95 @@ form button {
 }
 /* ===================show page styles===============  */
 
-.show-container{ 
+.show-container {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-.ui.comments{ 
+.ui.comments {
   width: 650px;
   padding-bottom: 20px;
 }
 
-.show-wrapper{ 
+.show-wrapper {
   align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.item-info{ 
+.item-info {
   display: flex;
-  margin:20px;
-  padding:40px;
+  margin: 20px;
+  padding: 40px;
   flex-direction: column;
   align-items: center;
   width: 40%;
 }
-.item-description{ 
+.item-description {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-bottom: 10%;
 }
-#description{ 
+#description {
   color: #fff;
   background-color: #000;
   width: 60%;
   text-align: center;
   margin: 0;
 }
-#comment-author{ 
+#comment-author {
   font-weight: bold;
   font-size: 1.2em;
   color: black;
 }
 .button-wrapper {
   padding-top: 50px;
-  display: flex; 
+  display: flex;
   flex-direction: row;
   justify-content: flex-start;
   justify-content: space-between;
-
 }
 
 /*=================Forum styles=================== */
-.forum-container{ 
+.forum-container {
   display: grid;
-  grid-template-rows: repeat(2,1fr);
-  grid-template-columns: repeat(2,1fr);
-  margin:auto auto;
-  border: 1px #ffe4c4 solid;
+  grid-template-rows: repeat(2, 40vh);
+  grid-template-columns: repeat(2, 1fr);
+  margin: auto auto;
   border-radius: 10px;
   width: 60%;
   height: 100%;
   align-items: flex-start;
   justify-items: center;
-  
 }
 
-.forum-header{
+.forum-container img {
+  box-shadow: 0 0 10px #000000;
+  height: auto;
+  width: 400px;
+}
+
+.forum-header {
   text-align: center;
   animation: popout 1s ease;
 }
 
-.forum-header h2{ 
- color: #000;
+.forum-header h2 {
+  color: #000;
 }
-
-
-
+hr {
+  margin-bottom: 30px;
+}
 
 /* surf reports */
-.report-wrapper{
+.report-wrapper {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
-.report{ 
+.report {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -257,12 +255,24 @@ form button {
 /* ========== Animations=============== */
 
 @keyframes popout {
-  from{transform:scale(0)}
-  80%{transform:scale(1.2)}
-  to{transform:scale(1)}
+  from {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 @-webkit-keyframes popout {
-  from{-webkit-transform:scale(0)}
-  80%{-webkit-transform:scale(1.2)}
-  to{-webkit-transform:scale(1)}
+  from {
+    -webkit-transform: scale(0);
+  }
+  80% {
+    -webkit-transform: scale(1.2);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
 }
