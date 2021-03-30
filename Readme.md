@@ -4,10 +4,10 @@ SurfShare is a personal full stack web application built with Node, Express, mon
 
 ## Final Product
 
-!["SurfShare Landing Page"](https://github.com/QuinAiton/SurfShare/blob/fa3d566f1d7e51f45d79ccb396f2bc4ec8a28819/docs/SurfShareHome.png)
-!["SurfShare Bargin Cave"](https://github.com/QuinAiton/SurfShare/blob/bf9f03d169694f9dbe67e65709fe28d0a9641108/docs/SurfShareBargin.png)
-!["SurfShare Show Page"](https://github.com/QuinAiton/SurfShare/blob/bf9f03d169694f9dbe67e65709fe28d0a9641108/docs/SurfShareShow.png)
-!["SurfShare Forum Page"](https://github.com/QuinAiton/SurfShare/blob/bf9f03d169694f9dbe67e65709fe28d0a9641108/docs/SurfShareForum.png)
+![SurfShare Landing Page](https://github.com/QuinAiton/SurfShare/blob/fa3d566f1d7e51f45d79ccb396f2bc4ec8a28819/docs/SurfShareHome.png)
+![SurfShare Bargin Cave](https://github.com/QuinAiton/SurfShare/blob/bf9f03d169694f9dbe67e65709fe28d0a9641108/docs/SurfShareBargin.png)
+![SurfShare Show Page](https://github.com/QuinAiton/SurfShare/blob/bf9f03d169694f9dbe67e65709fe28d0a9641108/docs/SurfShareShow.png)
+![SurfShare Forum Page](https://github.com/QuinAiton/SurfShare/blob/bf9f03d169694f9dbe67e65709fe28d0a9641108/docs/SurfShareForum.png)
 
 ## Dependencies
 
